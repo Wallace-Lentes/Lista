@@ -85,6 +85,14 @@ public class Lista {
         }
     }
 
+    public void buscar() {
+
+    }
+
+    public void remover() {
+
+    }
+
     public void mostrar() {
         No auxiliar = primeiro;
         while (auxiliar != null) {

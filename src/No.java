@@ -32,4 +32,12 @@ public class No {
     public Integer getInfo() {
         return this.informacao;
     }
+
+    public No buscar(int informacao) {
+        No p = this.proximo;
+        while ((p != null) && (p.getInfo() != informacao))
+            p = p.getProx();
+        return p;
+
+    }
 }
