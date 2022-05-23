@@ -1,103 +1,107 @@
 public class Lista {
-    private No primeiro;
 
-    public Lista() {
-        primeiro = null;
+	private No primeiro;
+		
+	public Lista()
+	{
+		this.primeiro = null;
+	};
+	
+	public boolean vazia() {
+		return this.primeiro == null;
+	};
+	
+	public void inserePrimeiro(int valor) {
+		No temp = new No();
+		temp.setInformacao(valor);
+		temp.setProximo(this.primeiro);
+		this.primeiro = temp;
+	};
+	
+	public void insereUltimo(int valor) {
+		if (this.vazia()) {
+			this.inserePrimeiro(valor);
+		} else {
+			No temp = this.primeiro;
+			
+			while(temp != null && temp.getProximo() != null) {
+				temp = temp.getProximo();
+			}
+			
+			if (temp.getProximo() == null) {
+				No newTemp = new No();
+				newTemp.setInformacao(valor);
+				temp.setProximo(newTemp);
+			}
+		}
+	}
+	
+	public void insereDepois(No node, int valor) {
+		No temp = this.primeiro;
+		No newTemp = new No();
+		
+		while(temp.getProximo() != null) {
 
-    }
+			if(temp.getInformacao() == node.getInformacao()) {
+				newTemp.setInformacao(valor);
+				newTemp.setProximo(temp.getProximo());
+				temp.setProximo(newTemp);
+				break;
+			}
+			temp = temp.getProximo();
+		}
+		
+	}
+	
+	public void removePrimeiro() {
+		this.primeiro = this.primeiro.getProximo();
+	}
+	
+	public void removeUltimo() {
+		No temp = this.primeiro;
+		No nextTemp = temp.getProximo();
+		
+		while(nextTemp != null) {
+			if(nextTemp.getProximo() == null) {
+				temp.setProximo(null);
+			}
 
-    public boolean vazia() {
-        return primeiro == null;
-    }
+			temp = nextTemp;
+			nextTemp = nextTemp.getProximo();
+		}
+	}
+	
+	public void remove(No node) {
+		No temp = this.primeiro;
+		No nextTemp = temp.getProximo();
+		
+		while (nextTemp != null) {
+			
+			if (nextTemp.getInformacao() == node.getInformacao()) {
+				temp.setProximo(nextTemp.getProximo());
+				break;
+			}
+			temp = nextTemp;
+			nextTemp = nextTemp.getProximo();		
+		}
+	}
+	
+	public No buscar(int valor) {
+		No temp = this.primeiro;
+		
+		while(temp != null && temp.getInformacao() != valor) {
+			temp = temp.getProximo();
+		}
+		return temp;
+	}
+	
+	public void mostrar() {
+		No temp = this.primeiro;
+		while (temp != null) {
+			System.out.print(temp.getInformacao() + ", ");
+			temp = temp.getProximo();
+		}
+	}
 
-    public void inserePrimeiro(int info) {
-        No auxiliar = new No();
-        auxiliar.setInfo(info);
-        auxiliar.setProx(primeiro);
-        primeiro = auxiliar;
-    }
-
-    public void insereDepois(int info) {
-        if (vazia() == true) {
-            inserePrimeiro(info);
-        }
-        No auxiliar = primeiro;
-
-        while (auxiliar != null && auxiliar.getProx() != null) {
-            auxiliar = auxiliar.getProx();
-        }
-        if (auxiliar.getProx() == null) {
-            No novo = new No();
-            novo.setInfo(info);
-            auxiliar.setProx(novo);
-        }
-
-    }
-
-    public void insereUltimo(int info) {
-        if (vazia() == true) {
-            inserePrimeiro(info);
-        } else {
-            No auxiliar = primeiro;
-
-            while (auxiliar != null && auxiliar.getProx() != null) {
-                auxiliar = auxiliar.getProx();
-            }
-            if (auxiliar.getProx() == null) {
-                No novo = new No();
-                novo.setInfo(info);
-                auxiliar.setProx(novo);
-            }
-        }
-    }
-
-    public void removerPimeiro(int info) {
-        No noAtual = this.primeiro;
-
-        while (noAtual != null) {
-            if (noAtual.getInfo() == info) {
-                if (noAtual.getAnterior() == null) {
-                    this.primeiro = noAtual.getProx();
-                    noAtual.getProx().setAnterior(null);
-                } else {
-                    noAtual.getAnterior().setProx(noAtual.getProx());
-                    noAtual.getProx().setAnterior(noAtual.getAnterior());
-                }
-            }
-            noAtual = noAtual.getProx();
-        }
-    }
-
-    public void removeUltimo(int info) {
-        No noAtual = this.primeiro;
-
-        while (noAtual != null) {
-            if (noAtual.getInfo() == info) {
-                if (noAtual.getAnterior() == null) {
-                    this.primeiro = noAtual.getProx();
-                    noAtual.getProx().setAnterior(null);
-                } else {
-                    noAtual.getAnterior().setProx(noAtual.getProx());
-                    noAtual.getProx().setAnterior(noAtual.getAnterior());
-                }
-            }
-            noAtual = noAtual.getProx();
-        }
-    }
-
-    public void buscar() {
-
-    }
-
-    public void remover() {
-
-    }
-
-    public void mostrar() {
-        No auxiliar = primeiro;
-        while (auxiliar != null) {
-            System.out.print(auxiliar.getInfo() + ", ");
-            auxiliar = auxiliar.getProx();
-        }
-    }
 }
+ 

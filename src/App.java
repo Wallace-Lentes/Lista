@@ -1,27 +1,39 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        No no;
-
-        Lista l = new Lista();
-        l.insereUltimo(10);
-        l.insereUltimo(20);
-        l.insereUltimo(30);
-        System.out.println("************");
-        l.inserePrimeiro(50);
-        l.insereDepois(22);
-        l.insereUltimo(5);
-        l.mostrar();
-        System.out.println("****************");
-        l.removerPimeiro(22);
-        l.mostrar();
-        l.removeUltimo(0);
-        System.out.println("*****************");
-        l.mostrar();
-
-        no = l.buscar(5);
-        if (no != null) {
-            l.remover(no);
-        }
+    	Lista list = new Lista();
+		list.insereUltimo(1);
+		list.insereUltimo(2);
+		list.insereUltimo(3);
+		
+		list.mostrar();
+		System.out.println();
+		System.out.println("-----");
+		
+		list.removeUltimo();
+		list.mostrar();
+		System.out.println();
+		System.out.println("-----");
+		
+		list.insereUltimo(3);
+		list.insereUltimo(4);
+		list.insereUltimo(5);
+		list.insereUltimo(6);
+		
+		list.mostrar();
+		System.out.println();
+		System.out.println("-----");
+		
+		list.remove(list.buscar(4));
+		list.mostrar();
+		System.out.println();
+		System.out.println("-----");
+		
+		list.insereDepois(list.buscar(3), 0);
+		list.mostrar();
+		System.out.println();
+		System.out.println("-----");
+		
+		System.out.println("END GAME");
 
     }
 }

@@ -1,43 +1,26 @@
 public class No {
-    private Integer informacao;
-    private No proximo;
-    private No anterior;
+	private Integer informacao;
+	private No proximo;
+	
+	public No()
+	{
+		this.informacao = null;
+		this.proximo = null;
+	}
 
-    public No() {
-        informacao = null;
-        proximo = null;
-        anterior = null;
-    }
+	public Integer getInformacao() {
+		return this.informacao;
+	}
 
-    public void setInfo(Integer informacao) {
-        this.informacao = informacao;
-    }
+	public void setInformacao(Integer informacao) {
+		this.informacao = informacao;
+	}
 
-    public void setProx(No proximo) {
-        this.proximo = proximo;
-    }
+	public No getProximo() {
+		return this.proximo;
+	}
 
-    public No getProx() {
-        return this.proximo;
-    }
-
-    public void setAnterior(No anterior) {
-        this.anterior = anterior;
-    }
-
-    public No getAnterior() {
-        return this.anterior;
-    }
-
-    public Integer getInfo() {
-        return this.informacao;
-    }
-
-    public No buscar(int informacao) {
-        No p = this.proximo;
-        while ((p != null) && (p.getInfo() != informacao))
-            p = p.getProx();
-        return p;
-
-    }
+	public void setProximo(No proximo) {
+		this.proximo = proximo;
+	}
 }
